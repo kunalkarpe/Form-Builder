@@ -22,4 +22,19 @@ const BASIC_INPUT_FIELDS: IBasicInputProps[] = [
   },
 ];
 
-export { BASIC_INPUT_FIELDS };
+const GRID_OPTIONS = [
+  {
+    id: 1,
+    name: "1",
+  },
+  {
+    id: 2,
+    name: "2",
+  },
+  {
+    id: 3,
+    name: "3",
+  },
+];
+
+export { BASIC_INPUT_FIELDS, GRID_OPTIONS };

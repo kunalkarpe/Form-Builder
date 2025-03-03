@@ -1,6 +1,8 @@
 import { FormProvider, useForm } from "react-hook-form";
 import UiTextInput from "../../../../ui/Inputs/UiTextInput";
 import { X } from "lucide-react";
+import UiSelector from "../../../../ui/Selectors/UiSelector";
+import { GRID_OPTIONS } from "../../FormBuilder.constant";
 
 const AddFieldModal = ({ handleClose }: { handleClose: () => void }) => {
   const formMethods = useForm();
@@ -8,7 +10,10 @@ const AddFieldModal = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <FormProvider {...formMethods}>
       <div className="flex w-full h-full absolute bg-white !top-0 px-2">
-        <button onClick={handleClose}>
+        <button
+          onClick={handleClose}
+          className="top-1 absolute right-2 ring-1 ring-extraLightGray rounded-full p-1"
+        >
           <X className="size-2" />
         </button>
         <form
@@ -27,6 +32,9 @@ const AddFieldModal = ({ handleClose }: { handleClose: () => void }) => {
             />
 
             <UiTextInput placeholder="Enter key..." label="Key" />
+            <div className="    ">
+              <UiSelector options={GRID_OPTIONS} label="GridSize" />
+            </div>
           </div>
         </form>
       </div>
