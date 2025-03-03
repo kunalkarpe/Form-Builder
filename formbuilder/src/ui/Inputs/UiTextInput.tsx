@@ -20,7 +20,7 @@ const UiTextInput = ({
         )}
       </div>
       <div className="flex border border-extraLightGray rounded-md px-2 text-sm">
-        <input type="text" placeholder={placeholder} className="outline-none" />
+        <input type="text" placeholder={placeholder} className="outline-none text-xs h-7" />
       </div>
     </div>
   );

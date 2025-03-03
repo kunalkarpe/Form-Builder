@@ -10,7 +10,8 @@ export default function useFormBuilder() {
     null
   );
   const [gridSize, setGridSize] = useState<string>("3");
-  console.log(selectedInput);
+  const [toggle, setToggle] = useState(false);
+
   return {
     states: {
       basicInput,
@@ -21,6 +22,8 @@ export default function useFormBuilder() {
       setSelectedInput,
       gridSize,
       setGridSize,
+      toggle,
+      setToggle,
     },
   };
 }

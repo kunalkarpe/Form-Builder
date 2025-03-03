@@ -1,6 +1,6 @@
-import FormSection from "./components/FormSection";
-import LeftSidebar from "./components/LeftSidebar";
-import RightSidebar from "./components/RightSidebar";
+import FormSection from "./components/sections/FormSection";
+import LeftSidebar from "./components/sections/LeftSidebar";
+import RightSidebar from "./components/sections/RightSidebar";
 import useFormBuilder from "./hooks/useFormBuilder";
 
 const FormBuilder = () => {
@@ -14,11 +14,18 @@ const FormBuilder = () => {
       setSelectedInput,
       gridSize,
       setGridSize,
+      toggle,
+      setToggle,
     },
   } = useFormBuilder();
   return (
     <div className="grid grid-cols-5 h-screen">
-      <LeftSidebar basicInput={basicInput} setAddedInput={setAddedInput} />
+      <LeftSidebar
+        basicInput={basicInput}
+        setAddedInput={setAddedInput}
+        toggle={toggle}
+        setToggle={setToggle}
+      />
       <FormSection
         addedInput={addedInput}
         selectedInput={selectedInput}

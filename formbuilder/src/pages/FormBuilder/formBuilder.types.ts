@@ -18,6 +18,8 @@ interface IFormSectionProps {
 interface ILeftSideBarProps {
   basicInput: IBasicInputProps[];
   setAddedInput: React.Dispatch<React.SetStateAction<IBasicInputProps[] | []>>;
+  toggle: boolean;
+  setToggle: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IRightSideBarProps {

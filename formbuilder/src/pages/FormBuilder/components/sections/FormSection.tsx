@@ -1,6 +1,6 @@
-import SizeCard from "../../../components/SizeCard/SizeCard";
-import UiTextInputBase from "../../../ui/Inputs/UiTextInputBase";
-import { IFormSectionProps } from "../formBuilder.types";
+import SizeCard from "../../../../components/SizeCard/SizeCard";
+import UiTextInputBase from "../../../../ui/Inputs/UiTextInputBase";
+import { IFormSectionProps } from "../../formBuilder.types";
 
 const FormSection = ({
   addedInput,
@@ -64,7 +64,7 @@ const FormSection = ({
       </div>
       {/* Form  */}
       <div className=" ring ring-extraLightGray shadow-lg rounded-md p-4 h-96 w-full ">
-        <div className={`grid grid-cols-${gridSize} gap-4`}>
+        <div className={`grid grid-cols-${gridSize} gap-4 `}>
           {addedInput?.map((input) => {
             const isSelected = input?.id === selectedInput?.id;
             return (
