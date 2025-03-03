@@ -69,9 +69,11 @@ button:focus-visible {
 @import "tailwindcss";
 
 @theme {
-  --color-extraLightGray: #8f8a8a;
-  --color-lightGray: #413e3e;
-  --color-offWhite: #f5f5f4;
-  --color-primary: #569bf5;
+  --color-extraLightGray: #dee2e6;
+  --color-lightGray: #ced4da;
+  --color-offWhite: #eff3f6;
+  --color-gray: #adb5bd;
+  --color-body: #495057;
+  --color-primary: #0063e6;
   --shadow-border: var(50px 50px 175px 175px);
 }
