@@ -6,7 +6,7 @@ import {
   ComboboxOptions,
 } from "@headlessui/react";
 import clsx from "clsx";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, StarIcon } from "lucide-react";
 import { useState } from "react";
 
 interface IUiSelectorProps {
@@ -15,13 +15,22 @@ interface IUiSelectorProps {
     id: number;
     name: string;
   }[];
+  value?: Record<string, string> | null;
+  onChange: (value: IUiSelectorProps["value"]) => void;
+  placeHolder?: string;
 }
 
-function UiSelector({ options, label }: IUiSelectorProps) {
+function UiSelector({
+  options,
+  label,
+  value,
+  onChange,
+  placeHolder = "Search name...",
+}: IUiSelectorProps) {
   const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState<{ id: number; name: string } | null>(
-    options[0]
-  );
+  // const [selected, setSelected] = useState<{ id: number; name: string } | null>(
+  //   options[0]
+  // );
   const filteredOptions =
     query === ""
       ? options
@@ -29,26 +38,29 @@ function UiSelector({ options, label }: IUiSelectorProps) {
           return person.name.toLowerCase().includes(query.toLowerCase());
         });
   return (
-    <div className=" w-52  flex flex-col  ">
-      <p className="text-xs text-body">{label}</p>
+    <div className=" w-full  flex flex-col gap-1 ">
+      <div className="flex gap-1">
+        <p className="text-xs font-semibold text-body">{label}</p>
+        <StarIcon className="text-red-500 fill-red-500 size-1" />
+      </div>
       <Combobox
-        value={selected}
-        onChange={(value) => setSelected(value)}
+        value={value}
+        onChange={(value) => onChange(value)}
         onClose={() => setQuery("")}
       >
-        <div className="relative">
+        <ComboboxButton className="relative">
           <ComboboxInput
             className={clsx(
-              "w-full rounded-lg border border-extraLightGray bg-white py-1.5 pr-8 pl-3 text-sm ",
+              "w-full rounded-lg border   border-extraLightGray bg-white py-1.5 pr-8 pl-3 text-xs ",
               "focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-primary/25"
             )}
             displayValue={(person: { name: string }) => person?.name}
             onChange={(event) => setQuery(event.target.value)}
+            placeholder={placeHolder}
           />
-          <ComboboxButton className="group absolute inset-y-0 right-0 px-2.5">
-            <ChevronDown className="size-4  text-primary " />
-          </ComboboxButton>
-        </div>
+
+          <ChevronDown className="size-4  text-primary absolute right-4 top-2.5 " />
+        </ComboboxButton>
 
         <ComboboxOptions
           anchor="bottom"

@@ -1,8 +1,11 @@
-import { ReactNode } from "react";
-
 interface IBasicInputProps {
   id: number;
-  comp: ReactNode;
+  type: string;
+  gridSize: string;
+  key: string;
+  name: string;
+  label: string;
+  placeholder: string;
 }
 
 interface IFormSectionProps {
@@ -20,10 +23,25 @@ interface ILeftSideBarProps {
   setAddedInput: React.Dispatch<React.SetStateAction<IBasicInputProps[] | []>>;
   toggle: boolean;
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  handleInputData: (data: IAddFieldFormSchema) => void;
 }
 
 interface IRightSideBarProps {
   selectedInput: IBasicInputProps | null;
+}
+
+interface IAddFieldFormSchema {
+  label: string;
+  placeholder: string;
+  gridSize: {
+    id: string;
+    name: string;
+  };
+  key: string;
+  inputType: {
+    id: string;
+    name: string;
+  };
 }
 
 export type {
@@ -31,4 +49,5 @@ export type {
   IBasicInputProps,
   ILeftSideBarProps,
   IRightSideBarProps,
+  IAddFieldFormSchema,
 };

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { BASIC_INPUT_FIELDS } from "../FormBuilder.constant";
-import { IBasicInputProps } from "../formBuilder.types";
+import { IAddFieldFormSchema, IBasicInputProps } from "../formBuilder.types";
 
 export default function useFormBuilder() {
   const [basicInput, setBasicInputs] =
@@ -12,6 +12,26 @@ export default function useFormBuilder() {
   const [gridSize, setGridSize] = useState<string>("3");
   const [toggle, setToggle] = useState(false);
 
+  const handelInputData = (data: IAddFieldFormSchema) => {
+    console.log(data);
+    // const name = data?.label?.toLocaleLowerCase();
+    // const placeholder = data?.placeholder;
+    // const label = data?.label;
+    // const gridSize = data?.gridSize?.name;
+    // const keyName = data?.key;
+    // if (data?.inputType?.name === "Text") {
+    //   const newComp = {
+    //     id: basicInput?.length + 1,
+
+    //     gridSize: gridSize,
+    //     key: keyName,
+    //   };
+
+    //   setBasicInputs([...basicInput, newComp]);
+    //   setAddedInput([...addedInput, newComp]);
+    //   setToggle(!toggle);
+    // }
+  };
   return {
     states: {
       basicInput,
@@ -25,5 +45,6 @@ export default function useFormBuilder() {
       toggle,
       setToggle,
     },
+    function: { handelInputData },
   };
 }

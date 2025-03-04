@@ -17,6 +17,7 @@ const FormBuilder = () => {
       toggle,
       setToggle,
     },
+    function: { handelInputData },
   } = useFormBuilder();
   return (
     <div className="grid grid-cols-5 h-screen">
@@ -25,6 +26,7 @@ const FormBuilder = () => {
         setAddedInput={setAddedInput}
         toggle={toggle}
         setToggle={setToggle}
+        handleInputData={handelInputData}
       />
       <FormSection
         addedInput={addedInput}

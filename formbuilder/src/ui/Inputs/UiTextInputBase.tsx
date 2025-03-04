@@ -18,7 +18,7 @@ const UiTextInputBase = ({
       <div className="flex gap-1 ">
         <p className="text-xs text-lightGray">{label}</p>
         {isRequired && (
-          <StarIcon className="size-2 text-red-500 fill-red-500" />
+          <StarIcon className="size-1 text-red-500 fill-red-500" />
         )}
       </div>
       <div

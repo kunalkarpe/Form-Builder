@@ -1,11 +1,12 @@
 import SizeCard from "../../../../components/SizeCard/SizeCard";
+import UiTextInput from "../../../../ui/Inputs/UiTextInput";
 import UiTextInputBase from "../../../../ui/Inputs/UiTextInputBase";
 import { IFormSectionProps } from "../../formBuilder.types";
 
 const FormSection = ({
   addedInput,
   setSelectedInput,
-  selectedInput,
+  // selectedInput,
   gridSize,
   setGridSize,
 }: IFormSectionProps) => {
@@ -30,13 +31,13 @@ const FormSection = ({
         </div>
       </div>
       <div className="flex px-2 justify-end gap-2">
-        <div className="flex  gap-2">
+        <div className="flex  gap-2  ">
           {/* <p className="text-sm font-semibold ">Form Grid Size :</p> */}
           <button
             onClick={() => {
               setGridSize("1");
             }}
-            className="ring-1 ring-extraLightGray  rounded-sm  w-16  flex items-center p-1"
+            className="ring-1 ring-extraLightGray  rounded-sm  w-16  flex items-center p-1 hover:cursor-pointer"
           >
             <SizeCard width={16} />
           </button>
@@ -54,7 +55,7 @@ const FormSection = ({
             onClick={() => {
               setGridSize("3");
             }}
-            className="ring-1  ring-extraLightGray  rounded-sm w-16 flex items-center gap-1 p-1"
+            className="ring-1  ring-extraLightGray  rounded-sm w-16 flex items-center gap-1 p-1 hover:cursor-pointer"
           >
             <SizeCard />
             <SizeCard />
@@ -66,18 +67,23 @@ const FormSection = ({
       <div className=" ring ring-extraLightGray shadow-lg rounded-md p-4 h-96 w-full ">
         <div className={`grid grid-cols-${gridSize} gap-4 `}>
           {addedInput?.map((input) => {
-            const isSelected = input?.id === selectedInput?.id;
+            console.log(addedInput);
             return (
               <div
-                className={`h-fit p-1  ${
-                  isSelected
-                    ? " border border-dashed border-primary rounded-md"
-                    : " "
-                } `}
+                className={`h-fit p-1  ${" border border-dashed border-primary rounded-md"} `}
                 key={input?.id}
               >
                 <button onClick={() => setSelectedInput(input)}>
-                  {input?.comp}
+                  {input?.type === "Text" && (
+                    <UiTextInput
+                      name={input?.name}
+                      label={input?.label}
+                      placeholder={input?.placeholder}
+                      registerOptions={{
+                        required: `${input?.label} is required`,
+                      }}
+                    />
+                  )}
                 </button>
               </div>
             );
