@@ -11,7 +11,7 @@ export default function useFormBuilder() {
   );
   const [gridSize, setGridSize] = useState<string>("3");
   const [toggle, setToggle] = useState(false);
-
+  console.log(addedInput);
   const handelInputData = (data: IAddFieldFormSchema) => {
     console.log(data);
     // const name = data?.label?.toLocaleLowerCase();

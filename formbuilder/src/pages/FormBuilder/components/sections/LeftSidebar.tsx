@@ -47,7 +47,18 @@ ILeftSideBarProps) => {
                   <button
                     className="absolute right-2"
                     onClick={() =>
-                      setAddedInput((prev) => [...prev, inputField])
+                      setAddedInput((prev) => [
+                        ...prev,
+                        {
+                          id: 11,
+                          type: inputField?.type,
+                          gridSize: inputField?.gridSize,
+                          key: inputField?.key,
+                          name: inputField?.name,
+                          label: inputField?.label,
+                          placeholder: inputField?.placeholder,
+                        },
+                      ])
                     }
                   >
                     <PlusCircleIcon className="size-4 text-primary" />
