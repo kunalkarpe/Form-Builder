@@ -95,7 +95,9 @@ const FormSection = ({
                           <UiSelector
                             value={value}
                             onChange={onChange}
-                            options={input?.option || []}
+                            options={[]}
+                            // options={input?.option || []}
+
                             label={input?.label}
                             placeHolder={input?.placeholder}
                           />
