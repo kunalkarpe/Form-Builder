@@ -14,23 +14,18 @@ export default function useFormBuilder() {
   console.log(addedInput);
   const handelInputData = (data: IAddFieldFormSchema) => {
     console.log(data);
-    // const name = data?.label?.toLocaleLowerCase();
-    // const placeholder = data?.placeholder;
-    // const label = data?.label;
-    // const gridSize = data?.gridSize?.name;
-    // const keyName = data?.key;
-    // if (data?.inputType?.name === "Text") {
-    //   const newComp = {
-    //     id: basicInput?.length + 1,
 
-    //     gridSize: gridSize,
-    //     key: keyName,
-    //   };
-
-    //   setBasicInputs([...basicInput, newComp]);
-    //   setAddedInput([...addedInput, newComp]);
-    //   setToggle(!toggle);
-    // }
+    const newComp = {
+      id: basicInput?.length + 1,
+      type: data?.inputType?.name,
+      gridSize: data?.gridSize?.name,
+      key: data?.key,
+      name: data?.label,
+      label: data?.label,
+      placeholder: "Enter name...",
+    };
+    setBasicInputs((prev) => [...prev, newComp]);
+    setToggle(!toggle);
   };
   return {
     states: {

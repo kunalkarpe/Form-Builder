@@ -68,9 +68,8 @@ const FormSection = ({
         </div>
         {/* Form  */}
         <div className=" ring ring-extraLightGray shadow-lg rounded-md p-4 h-96 w-full ">
-          <div className={`grid grid-cols-${gridSize} gap-4 `}>
+          <div className={`grid  grid-cols-${gridSize} gap-4 `}>
             {addedInput?.map((input) => {
-              console.log(input);
               return (
                 <div
                   className={`h-fit p-1 w-44 ${" border border-dashed border-primary rounded-md"} `}
