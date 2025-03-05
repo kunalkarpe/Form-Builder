@@ -18,7 +18,7 @@ const UiTextInput = ({
 }: ITextInputProps) => {
   const { register } = useFormContext();
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-1 w-full">
       <div className="flex gap-1 ">
         <p className="text-xs font-semibold text-body">{label}</p>
         {isRequired && registerOptions?.required && (

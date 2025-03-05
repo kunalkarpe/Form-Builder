@@ -41,6 +41,7 @@ const LeftSidebar = ({
                           name: inputField?.name,
                           label: inputField?.label,
                           placeholder: inputField?.placeholder,
+                          option: inputField?.option,
                         },
                       ])
                     }

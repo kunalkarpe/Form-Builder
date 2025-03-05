@@ -24,7 +24,7 @@ const UiButton = ({
       onClick={onClick}
     >
       <p className="text-white">{icon ?? ""}</p>
-      <p className="text-white">{title ?? ""}</p>
+      <p className="text-white text-sm">{title ?? ""}</p>
       {children}
     </button>
   );

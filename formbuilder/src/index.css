@@ -1,6 +1,4 @@
-
 @import "tailwindcss";
-
 
 @theme {
   --color-extraLightGray: #dee2e6;
@@ -8,6 +6,6 @@
   --color-offWhite: #eff3f6;
   --color-gray: #adb5bd;
   --color-body: #495057;
-  --color-primary: #0063e6;
+  --color-primary: #ff5900;
   --shadow-border: var(50px 50px 175px 175px);
 }

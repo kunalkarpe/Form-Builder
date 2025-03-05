@@ -6,6 +6,7 @@ interface IBasicInputProps {
   name: string;
   label: string;
   placeholder: string;
+  option?: string[];
 }
 
 interface IFormSectionProps {
@@ -42,6 +43,7 @@ interface IAddFieldFormSchema {
     id: string;
     name: string;
   };
+  option?: string[];
 }
 
 export type {

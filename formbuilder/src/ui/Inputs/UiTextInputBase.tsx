@@ -5,6 +5,7 @@ interface ITextInputBaseProps {
   isRequired?: boolean;
   placeholder?: string;
   inputClassName?: string;
+  className?: string;
 }
 
 const UiTextInputBase = ({

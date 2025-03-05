@@ -59,7 +59,7 @@ function UiSelector({
             placeholder={placeHolder}
           />
 
-          <ChevronDown className="size-4  text-primary absolute right-4 top-2.5 " />
+          <ChevronDown className="size-4  text-primary absolute right-4 top-2" />
         </ComboboxButton>
 
         <ComboboxOptions
@@ -74,9 +74,9 @@ function UiSelector({
             <ComboboxOption
               key={person.id}
               value={person}
-              className="group flex cursor-default items-center gap-2 rounded-lg py-1.5 px-3 select-none data-[focus]:bg-primary/70 data-[focus]:text-white"
+              className="group flex cursor-default items-center gap-2 rounded-lg py-1 px-3 text-body font-semibold select-none data-[focus]:bg-primary/70 data-[focus]:text-white"
             >
-              <div className="text-sm/6 ">{person.name}</div>
+              <div className="text-xs">{person.name}</div>
             </ComboboxOption>
           ))}
         </ComboboxOptions>

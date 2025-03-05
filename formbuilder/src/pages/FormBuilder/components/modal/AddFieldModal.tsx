@@ -5,6 +5,7 @@ import UiSelector from "../../../../ui/Selectors/UiSelector";
 import { GRID_OPTIONS, INPUT_TYPE_OPTIONS } from "../../FormBuilder.constant";
 import UiButton from "../../../../ui/Buttons/UiButton";
 import { IAddFieldFormSchema } from "../../formBuilder.types";
+import SelectorOptions from "../fieldArrayComponents/SelectorOptions";
 
 const AddFieldModal = ({
   handleClose,
@@ -32,7 +33,7 @@ const AddFieldModal = ({
           <div className="flex justify-center ">
             <p>Add Field</p>
           </div>
-          <div className="flex flex-col gap-2 w-full">
+          <div className="flex flex-col gap-2 w-full h-[calc(100vh-90px)] overflow-y-auto">
             <UiTextInput
               name="label"
               placeholder="Enter label..."
@@ -85,6 +86,10 @@ const AddFieldModal = ({
                 />
               )}
             />
+
+            {formMethods?.watch("inputType")?.name === "Selector" && (
+              <SelectorOptions />
+            )}
           </div>
 
           <UiButton
