@@ -59,17 +59,22 @@ const INPUT_TYPE_OPTIONS = [
     id: 1,
     name: "Text",
   },
-  {
-    id: 4,
-    name: "Number",
-  },
+
   {
     id: 2,
-    name: "Selector",
+    name: "Toggle",
   },
   {
     id: 3,
-    name: "Toggle",
+    name: "Selector",
+  },
+  {
+    id: 4,
+    name: "Multi Selector",
+  },
+  {
+    id: 5,
+    name: "Checkbox",
   },
 ];
 

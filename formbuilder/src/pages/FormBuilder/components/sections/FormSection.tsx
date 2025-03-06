@@ -1,21 +1,22 @@
 import { Controller, FormProvider, useForm } from "react-hook-form";
-import SizeCard from "../../../../components/SizeCard/SizeCard";
 import UiTextInput from "../../../../ui/Inputs/UiTextInput";
 import UiTextInputBase from "../../../../ui/Inputs/UiTextInputBase";
-import { IFormSectionProps } from "../../formBuilder.types";
 import UiSelector from "../../../../ui/Selectors/UiSelector";
+import { IFormSectionProps } from "../../formBuilder.types";
+import UiSwitch from "../../../../ui/Switch/UiSwitch";
+import UiCheckbox from "../../../../ui/Checkbox/UiCheckbox";
 
 const FormSection = ({
   addedInput,
   setSelectedInput,
-  // selectedInput,
-  gridSize,
-  setGridSize,
-}: IFormSectionProps) => {
+}: // selectedInput,
+// gridSize,
+// setGridSize,
+IFormSectionProps) => {
   const formMethods = useForm();
   return (
     <FormProvider {...formMethods}>
-      <div className="col-span-3 flex flex-col gap-2 p-2 ">
+      <div className="col-span-9 border border-extraLightGray rounded-md flex flex-col gap-2 p-2 bg-white shadow-md">
         {/* Title and Image Section */}
         <div className="flex gap-2 border-b border-extraLightGray pb-2 items-start">
           <div className="flex">
@@ -34,9 +35,8 @@ const FormSection = ({
             />
           </div>
         </div>
-        <div className="flex px-2 justify-end gap-2">
+        {/* <div className="flex px-2 justify-end gap-2">
           <div className="flex  gap-2  ">
-            {/* <p className="text-sm font-semibold ">Form Grid Size :</p> */}
             <button
               onClick={() => {
                 setGridSize("1");
@@ -66,15 +66,17 @@ const FormSection = ({
               <SizeCard />
             </button>
           </div>
-        </div>
+        </div> */}
         {/* Form  */}
-        <div className=" ring ring-extraLightGray shadow-lg rounded-md p-4 h-96 w-full ">
-          <div className={`grid grid-cols-${gridSize} gap-4 `}>
+        <div className="p-2 h-96 w-full ">
+          <div
+            className={`grid grid-cols-3 gap-4 h-[calc(100vh-190px)] overflow-auto`}
+          >
             {addedInput?.map((input) => {
               console.log(input);
               return (
                 <div
-                  className={`h-fit p-1 w-44 ${" border border-dashed border-primary rounded-md"} `}
+                  className={`h-fit  p-1 w-44 ${" border border-dashed border-primary rounded-md"} `}
                   key={input?.id}
                 >
                   <button onClick={() => setSelectedInput(input)}>
@@ -100,6 +102,33 @@ const FormSection = ({
 
                             label={input?.label}
                             placeHolder={input?.placeholder}
+                          />
+                        )}
+                      />
+                    )}
+
+                    {input?.type === "Toggle" && (
+                      <Controller
+                        name={input?.name}
+                        control={formMethods?.control}
+                        render={({ field: { value, onChange } }) => (
+                          <UiSwitch
+                            value={value}
+                            onChange={onChange}
+                            label={input?.label}
+                          />
+                        )}
+                      />
+                    )}
+                    {input?.type === "Checkbox" && (
+                      <Controller
+                        name={input?.name}
+                        control={formMethods?.control}
+                        render={({ field: { value, onChange } }) => (
+                          <UiCheckbox
+                            value={value}
+                            onChange={onChange}
+                            label={input?.label}
                           />
                         )}
                       />

@@ -1,6 +1,7 @@
+import Navbar from "../../components/Navbar/Navbar";
+import Sidebar from "../../components/SideBar/Sidebar";
 import FormSection from "./components/sections/FormSection";
 import LeftSidebar from "./components/sections/LeftSidebar";
-import RightSidebar from "./components/sections/RightSidebar";
 import useFormBuilder from "./hooks/useFormBuilder";
 
 const FormBuilder = () => {
@@ -20,22 +21,27 @@ const FormBuilder = () => {
     function: { handelInputData },
   } = useFormBuilder();
   return (
-    <div className="grid grid-cols-5 h-screen">
-      <LeftSidebar
-        basicInput={basicInput}
-        setAddedInput={setAddedInput}
-        toggle={toggle}
-        setToggle={setToggle}
-        handleInputData={handelInputData}
-      />
-      <FormSection
-        addedInput={addedInput}
-        selectedInput={selectedInput}
-        setSelectedInput={setSelectedInput}
-        gridSize={gridSize}
-        setGridSize={setGridSize}
-      />
-      <RightSidebar selectedInput={selectedInput} />
+    <div className="flex bg-primary/5 h-screen ">
+      <Sidebar />
+      <div className="flex flex-col flex-1 h-full ">
+        <Navbar />
+        <div className="grid grid-cols-12 p-2 gap-4 flex-1 bg-primary/5">
+          <FormSection
+            addedInput={addedInput}
+            selectedInput={selectedInput}
+            setSelectedInput={setSelectedInput}
+            gridSize={gridSize}
+            setGridSize={setGridSize}
+          />
+          <LeftSidebar
+            basicInput={basicInput}
+            setAddedInput={setAddedInput}
+            toggle={toggle}
+            setToggle={setToggle}
+            handleInputData={handelInputData}
+          />
+        </div>
+      </div>
     </div>
   );
 };

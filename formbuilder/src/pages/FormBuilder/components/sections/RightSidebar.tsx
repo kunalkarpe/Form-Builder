@@ -1,8 +1,8 @@
-import { IRightSideBarProps } from "../formBuilder.types";
+import { IRightSideBarProps } from "../../formBuilder.types";
 
 const RightSidebar = ({ selectedInput }: IRightSideBarProps) => {
   return (
-    <div className="col-span-1 flex flex-col gap-2 border border-extraLightGray rounded-md py-2 px-4 ">
+    <div className="col-span-4 flex flex-col gap-2 border border-extraLightGray rounded-md py-2 px-4 ">
       <p>Modify input</p>
       <div className="flex">
         {selectedInput ? (

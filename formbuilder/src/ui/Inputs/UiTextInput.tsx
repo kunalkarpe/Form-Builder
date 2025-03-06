@@ -29,7 +29,7 @@ const UiTextInput = ({
         <input
           type="text"
           placeholder={placeholder}
-          className="outline-none text-xs h-7"
+          className="outline-none text-xs h-7 caret-primary"
           {...register(name, registerOptions)}
         />
       </div>
