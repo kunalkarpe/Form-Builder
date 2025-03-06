@@ -1,9 +1,9 @@
-import { Controller, FormProvider, useForm } from "react-hook-form";
-import UiTextInput from "../../../../ui/Inputs/UiTextInput";
 import { X } from "lucide-react";
+import { Controller, FormProvider, useForm } from "react-hook-form";
+import UiButton from "../../../../ui/Buttons/UiButton";
+import UiTextInput from "../../../../ui/Inputs/UiTextInput";
 import UiSelector from "../../../../ui/Selectors/UiSelector";
 import { GRID_OPTIONS, INPUT_TYPE_OPTIONS } from "../../FormBuilder.constant";
-import UiButton from "../../../../ui/Buttons/UiButton";
 import { IAddFieldFormSchema } from "../../formBuilder.types";
 import SelectorOptions from "../fieldArrayComponents/SelectorOptions";
 
@@ -54,7 +54,7 @@ const AddFieldModal = ({
                 required: "Label is required",
               }}
             />
-            {!["Checkbox", "Selector"]?.includes(
+            {!["Checkbox", "Toggle"]?.includes(
               formMethods?.watch("inputType")?.name
             ) && (
               <UiTextInput
@@ -89,9 +89,9 @@ const AddFieldModal = ({
               )}
             />
 
-            {formMethods?.watch("inputType")?.name === "Selector" && (
-              <SelectorOptions />
-            )}
+            {["Multi Selector", "Selector"]?.includes(
+              formMethods?.watch("inputType")?.name
+            ) && <SelectorOptions />}
           </div>
 
           <UiButton

@@ -28,6 +28,7 @@ const FormBuilder = () => {
         <div className="grid grid-cols-12 p-2 gap-4 flex-1 bg-primary/5">
           <FormSection
             addedInput={addedInput}
+            setAddedInput= {setAddedInput}
             selectedInput={selectedInput}
             setSelectedInput={setSelectedInput}
             gridSize={gridSize}

@@ -6,12 +6,14 @@ interface IBasicInputProps {
   name: string;
   label: string;
   placeholder: string;
-  option?: string[];
+  option?: { id: number; name: string }[];
 }
 
 interface IFormSectionProps {
   addedInput: IBasicInputProps[];
   selectedInput: IBasicInputProps | null;
+  setAddedInput: React.Dispatch<React.SetStateAction<IBasicInputProps[] | []>>;
+
   setSelectedInput: React.Dispatch<
     React.SetStateAction<IBasicInputProps | null>
   >;
@@ -43,7 +45,7 @@ interface IAddFieldFormSchema {
     id: string;
     name: string;
   };
-  option?: string[];
+  option?: { option: string }[];
 }
 
 export type {

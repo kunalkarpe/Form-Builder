@@ -5,15 +5,40 @@ import UiSelector from "../../../../ui/Selectors/UiSelector";
 import { IFormSectionProps } from "../../formBuilder.types";
 import UiSwitch from "../../../../ui/Switch/UiSwitch";
 import UiCheckbox from "../../../../ui/Checkbox/UiCheckbox";
+import UiMultiSelector from "../../../../ui/Selectors/UiMultiSelector";
+import { useState } from "react";
 
 const FormSection = ({
   addedInput,
   setSelectedInput,
+  setAddedInput,
 }: // selectedInput,
 // gridSize,
 // setGridSize,
 IFormSectionProps) => {
   const formMethods = useForm();
+  const [multiState, setMultiState] = useState<{ id: number; name: string }[]>(
+    []
+  );
+  const [draggedindex, setDraggedIndex] = useState<number>(0);
+
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
+
+  const handleDraggedEnd = (index: number) => {
+    if (index === draggedindex) return;
+
+    setAddedInput((prev) => {
+      const updateInputs = [...prev];
+      [updateInputs[draggedindex], updateInputs[index]] = [
+        updateInputs[index],
+        updateInputs[draggedindex],
+      ];
+      return updateInputs;
+    });
+  };
+
   return (
     <FormProvider {...formMethods}>
       <div className="col-span-9 border border-extraLightGray rounded-md flex flex-col gap-2 p-2 bg-white shadow-md">
@@ -27,11 +52,19 @@ IFormSectionProps) => {
               placeholder="Add title here..."
               isRequired={false}
               inputClassName="!w-44 !ring-lightGray"
+              name="title"
+              registerOptions={{
+                required: "Title is required",
+              }}
             />
             <UiTextInputBase
               placeholder="Add description here..."
               isRequired={false}
               inputClassName="!w-96 !ring-lightGray"
+              name="description"
+              registerOptions={{
+                required: "Description is required",
+              }}
             />
           </div>
         </div>
@@ -68,18 +101,22 @@ IFormSectionProps) => {
           </div>
         </div> */}
         {/* Form  */}
-        <div className="p-2 h-96 w-full ">
-          <div
-            className={`grid grid-cols-3 gap-4 h-[calc(100vh-190px)] overflow-auto`}
-          >
-            {addedInput?.map((input) => {
-              console.log(input);
+        <div className="p-2 h-[calc(100vh-190px)] overflow-auto w-full ">
+          <div className={`grid grid-cols-3 gap-4  `}>
+            {addedInput?.map((input, index) => {
               return (
                 <div
-                  className={`h-fit  p-1 w-44 ${" border border-dashed border-primary rounded-md"} `}
+                  className={`h-fit p-2 ${" border border-dashed border-primary rounded-md"} `}
                   key={input?.id}
+                  draggable={true}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDragStart={() => handleDragStart(index)}
+                  onDrop={() => handleDraggedEnd(index)}
                 >
-                  <button onClick={() => setSelectedInput(input)}>
+                  <button
+                    onClick={() => setSelectedInput(input)}
+                    className={`col-span-${input?.gridSize}`}
+                  >
                     {input?.type === "Text" && (
                       <UiTextInput
                         name={input?.name}
@@ -97,16 +134,31 @@ IFormSectionProps) => {
                           <UiSelector
                             value={value}
                             onChange={onChange}
-                            options={[]}
-                            // options={input?.option || []}
-
+                            options={input?.option || []}
                             label={input?.label}
                             placeHolder={input?.placeholder}
                           />
                         )}
                       />
                     )}
-
+                    {input?.type === "Multi Selector" && (
+                      <div className="flex w-52">
+                        <Controller
+                          name={input?.name}
+                          render={({ field: { value, onChange } }) => (
+                            <UiMultiSelector
+                              value={value}
+                              onChange={onChange}
+                              options={input?.option || []}
+                              state={multiState}
+                              setState={setMultiState}
+                              label={input?.label}
+                              placeHolder={input?.placeholder}
+                            />
+                          )}
+                        />
+                      </div>
+                    )}
                     {input?.type === "Toggle" && (
                       <Controller
                         name={input?.name}

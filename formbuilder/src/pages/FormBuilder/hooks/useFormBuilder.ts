@@ -11,7 +11,6 @@ export default function useFormBuilder() {
   );
   const [gridSize, setGridSize] = useState<string>("3");
   const [toggle, setToggle] = useState(false);
-  console.log(toggle);
   const handelInputData = (data: IAddFieldFormSchema) => {
     const newComp: IBasicInputProps = {
       id: basicInput?.length + 1,
@@ -23,8 +22,14 @@ export default function useFormBuilder() {
       placeholder: "Enter name...",
     };
     if (data?.option) {
-      newComp.option = data?.option;
+      newComp.option = data?.option?.map((optionUnit, index) => {
+        return {
+          id: index + 1,
+          name: optionUnit?.option,
+        };
+      });
     }
+
     setBasicInputs((prev) => [...prev, newComp]);
     setToggle(!toggle);
   };

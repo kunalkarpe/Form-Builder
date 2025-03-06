@@ -17,14 +17,14 @@ const LeftSidebar = ({
     <FormProvider {...formMethods}>
       <div className="col-span-3  bg-white flex flex-col items-center ring-1 ring-extraLightGray rounded-md gap-2 py-2 shadow-md  relative">
         <p className="font-semibold text-body">Basic Inputs</p>
-        <div className="flex flex-col gap-2  h-[calc(100vh-110px)] overflow-y-auto w-full px-2">
+        <div className="flex flex-col gap-2 py-2 px-4 h-[calc(100vh-110px)] overflow-y-auto w-full">
           {basicInput?.map((inputField) => {
             return (
               <div
-                className="flex flex-col gap-2 ring-1 ring-lightGray rounded-sm p-2 bg-white relative"
+                className="flex flex-col gap-2 shadow-md ring-1 ring-lightGray rounded-sm p-2 bg-white relative"
                 key={inputField?.id}
               >
-                <div className="flex  justify-between">
+                <div className="flex  justify-between items-center  ">
                   <p className="text-sm font-semibold text-body">
                     {inputField?.label}
                   </p>

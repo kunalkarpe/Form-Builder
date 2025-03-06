@@ -1,4 +1,9 @@
 import { StarIcon } from "lucide-react";
+import {
+  FieldValues,
+  RegisterOptions,
+  useFormContext
+} from "react-hook-form";
 
 interface ITextInputBaseProps {
   label?: string;
@@ -6,6 +11,8 @@ interface ITextInputBaseProps {
   placeholder?: string;
   inputClassName?: string;
   className?: string;
+  name: string;
+  registerOptions?: RegisterOptions<FieldValues, string>;
 }
 
 const UiTextInputBase = ({
@@ -13,7 +20,10 @@ const UiTextInputBase = ({
   isRequired = true,
   placeholder,
   inputClassName,
+  name,
+  registerOptions,
 }: ITextInputBaseProps) => {
+  const { register } = useFormContext();
   return (
     <div className="flex flex-col ">
       <div className="flex gap-1 ">
@@ -28,7 +38,8 @@ const UiTextInputBase = ({
         <input
           type="text"
           placeholder={placeholder}
-          className="outline-none  "
+          className="outline-none "
+          {...register(name, registerOptions)}
         />
       </div>
     </div>
